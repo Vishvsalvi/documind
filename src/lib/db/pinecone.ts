@@ -1,4 +1,4 @@
-import { Pinecone } from '@pinecone-database/pinecone'
+import { Pinecone, PineconeRecord, RecordMetadata } from '@pinecone-database/pinecone'
 import { downloadFromS3 } from '../s3-server';
 import {PDFLoader} from "@langchain/community/document_loaders/fs/pdf"
 import {RecursiveCharacterTextSplitter, Document} from "@pinecone-database/doc-splitter"
@@ -40,7 +40,7 @@ export const loadS3IntoPinecone = async (file_key: string) => {
     const documents = await Promise.all(docs.map(prepareDocument));
 
     // 3. Vectorize and embed the individual documents
-    const vector= await Promise.all(documents.flat().map(embedDocument));
+    const vector= await Promise.all(documents.flat().map(embedDocument)) as PineconeRecord<RecordMetadata>[];
 
     // 4. Upload the documents to Pinecone
 
