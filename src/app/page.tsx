@@ -8,27 +8,16 @@ import { eq } from 'drizzle-orm';
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { redirect } from 'next/navigation'
 import { navigateToChat } from '@/app/actions/handleRedirect'
+import { BorderBeam } from "@/components/ui/border-beam";
 
 export default async function Home() {
   const { userId } = auth();
-  
-  
-  const getUserChatId = async () => {
-    if(userId){
-      const userChat = await db.select().from(chats).where(eq(chats.userId, userId));
-      if(userChat.length){
-        redirect(`/chat/${userChat[0].id}`);
-      }else{
-        return alert("No chat found!")
-      }
-    }
-    return null;
-  }
 
   return (
 
     <div className="relative min-h-screen w-full overflow-hidden">
       <BackgroundLines className="absolute h-screen inset-0 z-0">
+      
         <div className="relative z-10 flex items-start justify-center w-full min-h-screen px-4 py-8 sm:py-12 md:py-16">
           <div className="w-full max-w-5xl">
             <div className="flex flex-col items-center text-center">
@@ -65,8 +54,9 @@ export default async function Home() {
                     </button>
                       </Link>
 
-                    <div className="w-full max-w-3xl mt-8 rounded-md">
+                    <div className="relative w-full max-w-3xl mt-8 rounded-md border-none">
                       <img src="/heropdf.png" alt="Hero image" className="rounded-md w-full h-auto" />
+                      <BorderBeam borderWidth={2} size={250} duration={12} delay={9} />
                     </div>
                   </div>
                 )}

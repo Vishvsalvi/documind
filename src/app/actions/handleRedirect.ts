@@ -15,7 +15,7 @@ export async function navigateToChat() {
       redirect(`/chat/${userChat[0].id}`)
     } else {
       alert("No chat found!")
-      return { error: "No chat found" }
+      return
     }
   }
   

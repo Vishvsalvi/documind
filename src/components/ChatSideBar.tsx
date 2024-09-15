@@ -2,10 +2,6 @@
 import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
 import {
-  IconArrowLeft,
-  IconBrandTabler,
-  IconSettings,
-  IconUserBolt,
   IconSquareRoundedPlus
 } from "@tabler/icons-react";
 import Link from "next/link";
@@ -13,7 +9,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { UserChat } from '@/lib/db/schema';
-import { MessageCircleDashed } from "lucide-react";
 
 type Props = {
   chats: UserChat[],
@@ -45,21 +40,6 @@ export function ChatSideBar({ chats, chatId }: Props) {
           </div>
         </div>
         <div>
-          {/* <SidebarLink
-              link={{
-                label: "Manu Arora",
-                href: "#",
-                icon: (
-                  <Image
-                    src="https://assets.aceternity.com/manu.png"
-                    className="h-7 w-7 flex-shrink-0 rounded-full"
-                    width={50}
-                    height={50}
-                    alt="Avatar"
-                  />
-                ),
-              }}
-            /> */}
         </div>
       </SidebarBody>
     </Sidebar>

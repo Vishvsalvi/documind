@@ -28,12 +28,9 @@ export default async function ChatPage({ params: { chatId } }: Props) {
 
   const userChat = await db.select().from(chats).where(eq(chats.userId, userId))
 
-  if (!userChat) {
-    return redirect("/");
-  }
-
-
   const currentChat = userChat.find((chat) => chat.id === parseInt(chatId));
+
+  
 
   return (
     <div
