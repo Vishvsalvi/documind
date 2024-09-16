@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Documind
+
+Documind is an intelligent document chat application that allows users to interact with PDF documents using natural language queries. By leveraging advanced AI technologies, Documind converts PDFs into searchable vector embeddings, enabling users to ask questions and receive accurate responses based on the document's content.
+
+## Features
+
+- PDF document upload and processing
+- Conversion of PDF content into vector embeddings
+- Natural language querying of document content
+- AI-powered responses based on document context
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework for building web applications
+- [Drizzle ORM](https://orm.drizzle.team/) - TypeScript ORM for SQL databases
+- [PostgreSQL](https://www.postgresql.org/) - Open-source relational database
+- [Pinecone](https://www.pinecone.io/) - Vector database for efficient similarity search
+- [OpenAI API](https://openai.com/api/) - AI language model for natural language processing
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v14 or later)
+- PostgreSQL
+- Pinecone account
+- OpenAI API key
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/documind.git
+   cd documind
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-## Learn More
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add the following variables:
+   ```
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   CLERK_SECRET_KEY=your_clerk_secret_key
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+   
+   DATABASE_URL=your_postgresql_connection_string
+   
+   NEXT_PUBLIC_S3_ACCESS_KEY_ID=your_s3_access_key_id
+   NEXT_PUBLIC_S3_SECRET_ACCESS_KEY=your_s3_secret_access_key
+   NEXT_PUBLIC_S3_BUCKET_NAME=your_s3_bucket_name
+   
+   PINECONE_API_KEY=your_pinecone_api_key
+   PINECONE_ENVIRONMENT=your_pinecone_environment
+   
+   OPENAI_API_KEY=your_openai_api_key
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Run database migrations:
+   ```
+   npx drizzle-kit push
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Start the development server:
+   ```
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Upload a PDF document using the provided interface.
+2. Wait for the document to be processed and converted into vector embeddings.
+3. Once processing is complete, start asking questions about the document in natural language.
+4. Receive AI-generated responses based on the content of your PDF.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
