@@ -11,10 +11,10 @@ export async function navigateToChat() {
   
   if (userId) {
     const userChat = await db.select().from(chats).where(eq(chats.userId, userId))
-    if (userChat.length) {
+    if (userChat.length > 0) {
       redirect(`/chat/${userChat[0].id}`)
     } else {
-      alert("No chat found!")
+      alert("No chat found, Please upload a pdf file!")
       return
     }
   }

@@ -2,16 +2,32 @@ import { UserButton } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs/server'
 import Link from "next/link";
 import FileUpload from "@/components/FileUpload";
-import {chats} from '@/lib/db/schema'
-import { db } from '@/lib/db';
-import { eq } from 'drizzle-orm';
 import { BackgroundLines } from "@/components/ui/background-lines";
-import { redirect } from 'next/navigation'
 import { navigateToChat } from '@/app/actions/handleRedirect'
 import { BorderBeam } from "@/components/ui/border-beam";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 export default async function Home() {
   const { userId } = auth();
+
+  const words = [
+    {
+      text: "Turn"
+    },
+    {
+      text: "your"
+    },
+    {
+      text: "PDFs"
+    },
+    {
+      text: "into"
+    },
+    {
+      text: "conversations.",
+      className: "text-indigo-600 dark:text-indigo-600"
+    }
+  ]
 
   return (
 
@@ -23,7 +39,7 @@ export default async function Home() {
             <div className="flex flex-col items-center text-center">
               <div className="flex items-center gap-2 mb-4">
                 <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl whitespace-normal sm:whitespace-nowrap tracking-tighter dark:text-gray-200">
-                  Turn your PDFs into conversations
+                <TypewriterEffectSmooth words={words} />
                 </h1>
                 <UserButton afterSwitchSessionUrl="/" />
               </div>
@@ -54,7 +70,7 @@ export default async function Home() {
                     </button>
                       </Link>
 
-                    <div className="relative w-full max-w-3xl mt-8 rounded-md border-none">
+                    <div className="relative w-full max-w-3xl mt-8 rounded-md border-none p-1">
                       <img src="/heropdf.png" alt="Hero image" className="rounded-md w-full h-auto" />
                       <BorderBeam borderWidth={2} size={250} duration={12} delay={9} />
                     </div>
