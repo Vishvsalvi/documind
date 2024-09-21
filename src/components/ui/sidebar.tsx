@@ -93,7 +93,7 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-950 w-[300px] flex-shrink-0",
+          "h-full px-4 py-4 hidden md:flex md:flex-col bg-neutral-100 dark:bg-gray-900 w-[300px] flex-shrink-0",
           className
         )}
         animate={{
@@ -119,13 +119,13 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-950 w-full"
+          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-neutral-100 dark:bg-gray-900 w-full"
         )}
         {...props}
       >
         <div className="flex justify-end z-20 w-full">
           <IconMenu2
-            className="text-neutral-800 dark:text-neutral-200"
+            className="text-neutral-800 dark:text-gray-300 hover:text-neutral-600 dark:hover:text-white transition-colors"
             onClick={() => setOpen(!open)}
           />
         </div>
@@ -140,12 +140,12 @@ export const MobileSidebar = ({
                 ease: "easeInOut",
               }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-white dark:bg-neutral-950 p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-white dark:bg-gray-900 p-10 z-[100] flex flex-col justify-between",
                 className
               )}
             >
               <div
-                className="absolute right-2 top-2 z-50 text-neutral-800 dark:text-neutral-200"
+                className="absolute right-2 top-2 z-50 text-neutral-800 dark:text-gray-300 hover:text-neutral-600 dark:hover:text-white transition-colors"
                 onClick={() => setOpen(!open)}
               >
                 <IconX />
@@ -175,19 +175,19 @@ export const SidebarLink = ({
     <Link
       href={link.id + ""}
       className={cn(
-        "flex items-center justify-start text-white dark:text-white gap-2 hover:text-white  group/sidebar py-2",
+        "flex items-center justify-start text-neutral-700 dark:text-gray-300 gap-2 hover:text-neutral-900 dark:hover:text-white group/sidebar py-2",
         className
       )}
       {...props}
     >
-      <MessageCircleMore className="font-extralight" />
+      <MessageCircleMore className="text-neutral-600 dark:text-gray-400" />
 
       <motion.span
         animate={{
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="hover:text-neutral-950 dark:text-white text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className="hover:text-neutral-900 dark:hover:text-white text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
       >
         {link.pdfName}
       </motion.span>

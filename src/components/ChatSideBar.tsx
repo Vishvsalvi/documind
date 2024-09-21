@@ -73,5 +73,3 @@ export const LogoIcon = () => {
     </Link>
   );
 };
-
-// Dummy dashboard component with content

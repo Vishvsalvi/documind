@@ -27,11 +27,12 @@ export async function getContext(query:string, fileKey:string){
 
     const queryEmbeddings = await getEmbeddings(query);
     const matches = await getMatchesFromEmbeddings(queryEmbeddings, fileKey);
-    const qualifier = matches!.filter((match) => match.score && match.score > 0.5);
+    const qualifier = matches!.filter((match) => match.score && match.score > 0.1);
     let docs = qualifier.map((match) => {
         if(match.metadata) return (match.metadata).text       
     })
     console.log("query string ",query);
+    console.log("matches ",docs);
     return docs.join("\n").substring(0, 2500);
 
 }
