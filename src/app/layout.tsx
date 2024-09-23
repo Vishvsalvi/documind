@@ -4,6 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Providers from '@/components/Providers'
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Suspense } from "react";
+import Loading from "./loading";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,22 +21,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <Providers>
-        <html lang="en">
-          <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-            <Toaster />
+    <Suspense fallback={<Loading/>} >
+
+      <ClerkProvider>
+        <Providers>
+          <html lang="en">
+            <body className={inter.className}>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                {children}
+              </ThemeProvider>
+              <Toaster />
             </body>
-        </html>
-      </Providers>
-    </ClerkProvider>
+          </html>
+        </Providers>
+      </ClerkProvider>
+    </Suspense>
   );
 }

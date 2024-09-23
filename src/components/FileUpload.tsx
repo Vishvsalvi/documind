@@ -92,7 +92,7 @@ const FileUpload = () => {
        
      <input {...getInputProps()} />
         <p className="text-xs font-medium text-gray-400 mt-2">
-          {uploading || isPending ? "Your pdf is being processed" : "PDF files only, max 10MB"}
+          {uploading || isPending ? "Your pdf is being processed" : "PDF files only, max 10MB and 5 pages"}
         </p>
       </label></div>
   )
