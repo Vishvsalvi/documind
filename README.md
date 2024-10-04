@@ -21,10 +21,11 @@ Documind is an intelligent document chat application that allows users to intera
 
 ### Prerequisites
 
-- Node.js (v14 or later)
+- Node.js (20 or later)
 - PostgreSQL
 - Pinecone account
 - OpenAI API key
+- AWS S3 bucket key
 
 ### Installation
 
